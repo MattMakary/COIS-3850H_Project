@@ -1,0 +1,88 @@
+﻿<Page x:Class="COIS_3850H_Project.MVVM.View.SignInPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:COIS_3850H_Project.MVVM.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Background="Transparent"
+      Title="SignInPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1.5*" />
+        </Grid.ColumnDefinitions>
+
+        <Border>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF2710D2" Offset="0" />
+                    <GradientStop Color="#FFAD4F3A" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Grid>
+            <Polygon Points="0,0 320,150 320,0" Fill="#FFAD4F3A" Stretch="Uniform" Margin="0,-175,0,175"/>
+            <Polygon Points="320,500 0,500 0,320" Fill="#FFAD4F3A" Stretch="Uniform" Margin="0,160,0,-160"/>
+            <Ellipse Margin="247,417,53,63" Width="20" Height="20" Fill="#FFAD4F3A" />
+            <Ellipse Margin="300,372,10,118" Width="10" Height="10" Fill="#FFAD4F3A" />
+            <Ellipse Margin="10,296,300,194" Width="10" Height="10" Fill="#FFAD4F3A" />
+
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Cardly" Foreground="White" Style="{StaticResource TitleText}" FontFamily="Sylfaen" FontSize="50" RenderTransformOrigin="0.505,0.567" />
+                <TextBlock Text="New User? Create a New Account" Opacity="0.8" Margin="20 30 20 30" Style="{StaticResource NormalText}" />
+                <Button Cursor="Hand" Content="Sign Up" Style="{StaticResource button}" Click="Button_Click_1" />
+            </StackPanel>
+        </Grid>
+
+        <Border Background="#FFFFFF" Grid.Column="1" MouseDown="Border_MouseDown">
+            <StackPanel VerticalAlignment="Center">
+
+                <TextBlock Text="Sign in" Foreground="#FFAD4F3A"  Margin="0 10" Style="{StaticResource TitleText}" />
+
+                <Border BorderBrush="#ACB0AF" BorderThickness="1" Margin="70 7" CornerRadius="5">
+                    <Grid Margin="3 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="textEmail" MouseDown="textEmail_MouseDown" Text="Email" Style="{StaticResource textHint}" />
+                        <TextBox x:Name="txtEmail" TextChanged="txtEmail_TextChanged" Style="{StaticResource textBox}" />
+                    </Grid>
+                </Border>
+
+
+
+                <Border BorderBrush="#ACB0AF" BorderThickness="1" Margin="70 7" CornerRadius="5">
+                    <Grid Margin="3 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource textHint}"/>
+                        <PasswordBox x:Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource textBox}" />
+                    </Grid>
+                </Border>
+                <Button Cursor ="Hand" Content=" Forgot Password? " Margin="220 2 0 15" Foreground="#878787" Style="{StaticResource forgotPswd}" Height="20" Width="114" Click="Button_Click_2" />
+
+                <Button Cursor="Hand" Content="Sign In" Click="Button_Click" Style="{StaticResource mainButton}" />
+                <TextBlock Text=" OR " Margin="0 20 0 15" Foreground="#878787" Style="{StaticResource NormalText}" />
+                <StackPanel Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Center">
+                    <Button Cursor="Hand" Style="{StaticResource buttonCircle}">
+                        <Image Source="/Images/google.png" Width="20" Height="20" />
+                    </Button>
+                    <Button Cursor="Hand" Style="{StaticResource buttonCircle}">
+                        <Image Source="/Images/facebook.png" Width="20" Height="20" />
+                    </Button>
+                    <Button Cursor="Hand" Style="{StaticResource buttonCircle}">
+                        <Image Source="/Images/linkedin.png" Width="20" Height="20" />
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Page>
