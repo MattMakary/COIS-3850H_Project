@@ -1,0 +1,347 @@
+﻿<Window x:Class="COIS_3850H_Project.MVVM.View.HomePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:COIS_3850H_Project.MVVM.View"
+        mc:Ignorable="d"
+        Title="HomePage" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Border
+        BorderBrush="DarkGray"
+        CornerRadius="8"
+        BorderThickness="2"
+        Background="White">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <!--Background Colour Right Side-->
+            <Rectangle Grid.Column="1"
+                Grid.Row="0"
+                Grid.RowSpan="4"
+                Fill="#7D3536"
+                Panel.ZIndex="0"/>
+
+            <!--Cardly Logo - Top Left-->
+            <Image
+            Grid.Row="0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="10,5,0,0"
+            Source="/Images/Cardly.png">
+            </Image>
+
+            <!--<Button Style="{StaticResource TestButton}">
+                hello world
+            </Button>-->
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row ="0"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right">
+
+                <!--Minimize Button-->
+                <Button x:Name="minButton"
+                    Content="-"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Foreground="Darkgray"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                            <Setter Property="TextElement.FontSize" Value="14"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" Height="25"
+                                    CornerRadius="0"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <!--Close Button-->
+                <Button x:Name="closeButton"
+                Content="X"
+                Grid.Column="2"
+                Grid.Row="0"
+                Foreground="Darkgray"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top" Click="closeButton_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                            <Setter Property="TextElement.FontSize" Value="14"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" Height="25"
+                                CornerRadius="0"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+
+            <!--StackPanel for Top Menu Buttons-->
+            <StackPanel Grid.Row="1" Grid.Column="0"
+                    Orientation="Horizontal"
+                    Grid.ColumnSpan="2">
+
+
+                <!--Line beneath menu buttons-->
+                <Border BorderBrush="LightGray"
+                        BorderThickness="0 0 0 3">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="195"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Home Button-->
+                        <Button x:Name="homeButton"
+                            Style="{StaticResource Button1}"
+                            Template="{StaticResource Button1Template}"
+                            Grid.Column="0" 
+                            Content="Home"
+                            Margin="10,0,10,0">
+                        </Button>
+
+                        <!--My Cards Button-->
+                        <Button x:Name="myCardsButton"
+                            Style="{StaticResource Button1}"
+                            Template="{StaticResource Button1Template}"
+                            Grid.Column="1" 
+                            Content="My Cards"
+                            Margin="10,0,10,0">
+                        </Button>
+
+                        <!--Payment Button-->
+                        <Button x:Name="paymentButton"
+                            Style="{StaticResource Button1}"
+                            Template="{StaticResource Button1Template}"
+                            Grid.Column="2" 
+                            Content="Payment"
+                            Margin="10,0,10,0">
+                        </Button>
+
+                        <!--Activity Button-->
+                        <Button x:Name="activityButton"
+                            Style="{StaticResource Button1}"
+                            Template="{StaticResource Button1Template}"
+                            Grid.Column="3" 
+                            Content="Activity"
+                            Margin="10,0,10,0">
+                        </Button>
+
+                        <!--Search Cards Textbox-->
+                        <TextBox x:Name="searchBox"
+                            Grid.Column="4"
+                            Grid.Row="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Width="115"
+                            Text="Search Cards and transactions"
+                            FontSize="10"
+                            FontStyle="Italic"
+                            TextWrapping="Wrap"
+                            Background="LightGray"
+                            Foreground="DarkGray">
+                        </TextBox>
+
+                        <!--Log Out Button-->
+                        <Button x:Name="logOutButton"
+                            Style="{StaticResource Button1}"
+                            Template="{StaticResource Button1Template}"
+                            Grid.Column="5"
+                            Grid.Row="0"
+                            Content="Log Out"
+                            Background="White"
+                            Foreground="#7D3536"
+                            HorizontalAlignment="Right"
+                            Margin="10,0,10,0" Click="logOutButton_Click">
+                        </Button>
+
+                    </Grid>
+                </Border>
+            </StackPanel>
+
+            <!--Card options stackpanel-->
+            <StackPanel Orientation="Vertical"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="157,4,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Image
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Source="/Images/cardimage.jpg"
+                Height="150"
+                Margin="0,20,0,10">
+
+                    </Image>
+
+                    <!--NickName Textbox-->
+                    <TextBox x:Name="CardName"
+                     Text="Card Name"
+                     Grid.Column="0"
+                     Grid.Row="1"
+                     Grid.ColumnSpan="2"
+                     Background="Transparent"
+                     Foreground="DarkGray"
+                     FontSize="18" 
+                    BorderThickness="0,0,0,2"
+                     />
+
+                    <!--Declaring combobox - binding the contents to fullName from cs.-->
+                    <ComboBox x:Name="colourComboBox"
+                        Style="{StaticResource ComboBox1}"
+                        Text="Choose Colour"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="1"
+                        Margin="0,15,5,0">
+                        <ComboBoxItem Content="Red"/>
+                        <ComboBoxItem Content="Green"/>
+                        <ComboBoxItem Content="Blue"/>
+                        <ComboBoxItem Content="Black"/>
+                    </ComboBox>
+
+                    <!--Declaring combobox - binding the contents to fullName from cs.-->
+                    <ComboBox x:Name="combobox2"
+                        Style="{StaticResource ComboBox1}"
+                        Text="Choose Limit"                           
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="1"
+                        Margin="0,15,5,0">
+                        <ComboBoxItem Content="$50"/>
+                        <ComboBoxItem Content="$100"/>
+                        <ComboBoxItem Content="$150"/>
+                        <ComboBoxItem Content="$200"/>
+                        <ComboBoxItem Content="$250"/>
+                    </ComboBox>
+
+                    <Button x:Name="CreateButton"
+                        Style="{StaticResource Button1}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="3"
+                        Content="Create"
+                        Foreground="White"
+                        Margin="0,40,0,10">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="250" Height="25"
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" 
+                                                  HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </Grid>
+            </StackPanel>
+
+
+            <!--Right Side Stack Panel-->
+            <StackPanel Orientation="Vertical"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Grid.RowSpan="4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="380"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                </Grid>
+            </StackPanel>
+
+            <Image
+                    Grid.Column="2"
+                    Grid.Row="3"
+                    Width="30"
+                    Height="30"
+                    Margin="0,1,10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Source="/images/cardly2.png"
+                    Opacity="0.65">
+            </Image>
+        </Grid>
+    </Border>
+</Window>

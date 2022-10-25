@@ -11,22 +11,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace COIS_3850H_Project.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for SignInPage.xaml
+    /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class SignInPage : Page
+    public partial class LoginPage : Window
     {
-        public SignInPage()
+        public LoginPage()
         {
             InitializeComponent();
-            ShowsNavigationUI = false;
         }
-
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
             Environment.Exit(0);
@@ -62,7 +59,9 @@ namespace COIS_3850H_Project.MVVM.View
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
             {
-                MessageBox.Show("Signed In");
+                HomePage homePage = new HomePage();
+                homePage.Show();
+                this.Close();
             }
         }
 
@@ -79,14 +78,18 @@ namespace COIS_3850H_Project.MVVM.View
             txtEmail.Focus();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("SignUpPage.xaml", UriKind.Relative));
-        }
+
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            CreateAccount createAccount = new CreateAccount();
+            createAccount.Show();
+            this.Close();
         }
     }
 }
