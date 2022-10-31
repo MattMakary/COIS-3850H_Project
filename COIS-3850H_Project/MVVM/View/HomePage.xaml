@@ -292,7 +292,8 @@
                         Grid.Row="3"
                         Content="Create"
                         Foreground="White"
-                        Margin="0,40,0,10">
+                        Margin="0,40,0,10"
+                        Click="CreateButton_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Width="250" Height="25"
