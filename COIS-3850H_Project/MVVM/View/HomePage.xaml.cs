@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -25,13 +26,38 @@ namespace COIS_3850H_Project.MVVM.View
             InitializeComponent();
         }
 
-
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        public void Form_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+            downPoint = new Point(Mouse.GetPosition(Application.Current.MainWindow).X, Mouse.GetPosition(Application.Current.MainWindow).Y);
         }
+
+        public void Form_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+            if (downPoint == new Point(0, 0))
+            {
+                return;
+            }
+            var location = new Point(Left + Mouse.GetPosition(Application.Current.MainWindow).X - downPoint.X, Top + Mouse.GetPosition(Application.Current.MainWindow).Y - downPoint.Y);
+            Left = location.X;
+            Top = location.Y;
+        }
+
+        public void Form_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+            downPoint = new Point(0, 0);
+        }
+
+        public Point downPoint = new Point(0, 0);
+
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -78,5 +104,6 @@ namespace COIS_3850H_Project.MVVM.View
 
             MessageBox.Show(string.Format("Your Card Number is: \r\n{0}", ccNumber));
         }
+
     }
 }

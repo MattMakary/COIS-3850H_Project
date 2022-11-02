@@ -5,16 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:COIS_3850H_Project.MVVM.View"
         mc:Ignorable="d"
-        Title="HomePage" Height="500" Width="800"
+        Title="HomePage" 
+        Height="500" 
+        Width="800"
+        WindowStyle="None"
+        Background="Transparent"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Border
         BorderBrush="DarkGray"
         CornerRadius="8"
         BorderThickness="2"
-        Background="White">
+        Background="White" MouseUp="Form_MouseUp" MouseMove="Form_MouseMove" MouseDown="Form_MouseDown">
 
-        <Grid>
+        <Grid MouseDown="Form_MouseDown" MouseMove="Form_MouseMove" MouseUp="Form_MouseUp">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="600"/>
                 <ColumnDefinition Width="*"/>
