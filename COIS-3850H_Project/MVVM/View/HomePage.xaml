@@ -12,6 +12,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
+        <!--Page styles--> 
     <Border
         BorderBrush="DarkGray"
         CornerRadius="8"

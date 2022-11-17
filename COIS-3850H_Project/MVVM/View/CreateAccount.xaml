@@ -8,7 +8,7 @@
         Title="CreateAccount" Height="500" Width="800"
         ResizeMode="NoResize"
         Background="Transparent"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"> <!--Page styles--> 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*" />

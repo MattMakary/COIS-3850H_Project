@@ -1,5 +1,4 @@
-﻿using GenerateCardWPFPractice;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +12,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using COIS_3850H_Project.Core;
 
 namespace COIS_3850H_Project.MVVM.View
 {

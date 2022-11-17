@@ -15,6 +15,7 @@ namespace COIS_3850H_Project.Core
         {
             monthlyAmount = 0;
             yearlyAmount = 0;
+            
         }
     }
 }
