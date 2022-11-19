@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace COIS_3850H_Project.MVVM.View
 {
@@ -24,6 +25,7 @@ namespace COIS_3850H_Project.MVVM.View
         {
             InitializeComponent();
         }
+        AccountDatabaseEntities2 db = new AccountDatabaseEntities2();
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
             Environment.Exit(0);
@@ -59,9 +61,22 @@ namespace COIS_3850H_Project.MVVM.View
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
             {
-                HomePage homePage = new HomePage();
-                homePage.Show();
-                this.Close();
+                string email = txtEmail.Text;
+                string password = passwordBox.Password;
+
+                var rec = db.usertables.Where(a => a.email == email && a.password == password).FirstOrDefault();
+                
+                if(rec != null)
+                {
+                    MessageBox.Show("Login Success");
+                    HomePage homePage = new HomePage();
+                    homePage.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("fail");
+                }
             }
         }
 

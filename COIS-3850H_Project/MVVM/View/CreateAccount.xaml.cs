@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,9 @@ namespace COIS_3850H_Project.MVVM.View
         {
             InitializeComponent();
         }
+
+        AccountDatabaseEntities2 db = new AccountDatabaseEntities2();
+
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 
@@ -34,7 +38,7 @@ namespace COIS_3850H_Project.MVVM.View
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(passwordBox.Password) && passwordBox.Password.Length > 0)
+            if (!string.IsNullOrEmpty(passwordBox.Text) && passwordBox.Text.Length > 0)
                 textPassword.Visibility = Visibility.Collapsed;
             else
                 textPassword.Visibility = Visibility.Visible;
@@ -45,28 +49,30 @@ namespace COIS_3850H_Project.MVVM.View
             passwordBox.Focus();
         }
 
-        private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(ConfirmpasswordBox.Password) && ConfirmpasswordBox.Password.Length > 0)
-                ConfirmPassword.Visibility = Visibility.Collapsed;
-            else
-                ConfirmPassword.Visibility = Visibility.Visible;
-        }
-
-        private void ConfirmPassword_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ConfirmpasswordBox.Focus();
-        }
-
+   
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
+            if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Text))
             {
-                HomePage homePage = new HomePage();
-                homePage.Show();
-                this.Close();
+                usertable obj = new usertable() {
+                    name = txtName.Text,
+                    email = txtEmail.Text,
+                    password = passwordBox.Text
+                };
+
+
+                db.usertables.Add(obj);
+                db.SaveChanges();
+
+
+                MessageBox.Show("Account is Successfully Created");
+                
+            }
+            else
+            {
+                MessageBox.Show("Please input the required fields");
             }
         }
 

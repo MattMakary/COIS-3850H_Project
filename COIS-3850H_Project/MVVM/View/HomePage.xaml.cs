@@ -37,7 +37,7 @@ namespace COIS_3850H_Project.MVVM.View
 
         public void Form_MouseMove(object sender, MouseEventArgs e)
         {
-            
+
             if (downPoint == new Point(0, 0))
             {
                 return;
@@ -105,5 +105,16 @@ namespace COIS_3850H_Project.MVVM.View
             MessageBox.Show(string.Format("Your Card Number is: \r\n{0}", ccNumber));
         }
 
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void paymentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Payment paymentPage = new Payment();
+            paymentPage.Show();
+            this.Close();
+        }
     }
 }
