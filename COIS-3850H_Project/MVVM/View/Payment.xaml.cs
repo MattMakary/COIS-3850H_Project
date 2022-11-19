@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Xamarin.Forms;
+//using Xamarin.Forms;
 
 namespace COIS_3850H_Project.MVVM.View
 {
@@ -23,14 +23,40 @@ namespace COIS_3850H_Project.MVVM.View
         public Payment()
         {
             InitializeComponent();
-         
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        public void Form_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+            downPoint = new Point(Mouse.GetPosition(Application.Current.MainWindow).X, Mouse.GetPosition(Application.Current.MainWindow).Y);
         }
+
+        public void Form_MouseMove(object sender, MouseEventArgs e)
+        {
+
+            if (downPoint == new Point(0, 0))
+            {
+                return;
+            }
+            var location = new Point(Left + Mouse.GetPosition(Application.Current.MainWindow).X - downPoint.X, Top + Mouse.GetPosition(Application.Current.MainWindow).Y - downPoint.Y);
+            Left = location.X;
+            Top = location.Y;
+        }
+
+        public void Form_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton != MouseButton.Left)
+            {
+                return;
+            }
+            downPoint = new Point(0, 0);
+        }
+
+        public Point downPoint = new Point(0, 0);
+
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -59,12 +85,6 @@ namespace COIS_3850H_Project.MVVM.View
 
         }
 
-        private void homeButton_Click(object sender, RoutedEventArgs e)
-        {
-            HomePage homePage = new HomePage();
-            homePage.Show();
-            this.Close();
-        }
         private void txtCard_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtCard.Text) && txtCard.Text.Length > 0)
@@ -125,6 +145,18 @@ namespace COIS_3850H_Project.MVVM.View
             {
                 MessageBox.Show("You Amount $" + txtAmount.Text + " has been succesfully deposited");
             }
+        }
+
+        private void myCardsButton_Click(object sender, RoutedEventArgs e)
+        {
+            HomePage homePage = new HomePage();
+            homePage.Show();
+            this.Close();
+        }
+
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

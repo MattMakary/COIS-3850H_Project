@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,6 +13,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using COIS_3850H_Project.Core;
+using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Application = System.Windows.Application;
+using Label = System.Windows.Controls.Label;
+using Point = System.Windows.Point;
+using SolidColorBrush = System.Windows.Media.SolidColorBrush;
 
 namespace COIS_3850H_Project.MVVM.View
 {
@@ -21,9 +27,11 @@ namespace COIS_3850H_Project.MVVM.View
     /// </summary>
     public partial class HomePage : Window
     {
+        
         public HomePage()
         {
             InitializeComponent();
+
         }
 
         public void Form_MouseDown(object sender, MouseButtonEventArgs e)
@@ -102,12 +110,16 @@ namespace COIS_3850H_Project.MVVM.View
             //Console.WriteLine(ccNumber);
             //Console.ReadLine();
 
+            
+
             MessageBox.Show(string.Format("Your Card Number is: \r\n{0}", ccNumber));
         }
 
-        private void homeButton_Click(object sender, RoutedEventArgs e)
+        private void myCardsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            HomePage homePage = new HomePage();
+            homePage.Show();
+            this.Close();
         }
 
         private void paymentButton_Click(object sender, RoutedEventArgs e)
@@ -115,6 +127,16 @@ namespace COIS_3850H_Project.MVVM.View
             Payment paymentPage = new Payment();
             paymentPage.Show();
             this.Close();
+        }
+
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void listView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
