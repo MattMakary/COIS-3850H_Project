@@ -22,8 +22,9 @@
 
         <Grid MouseDown="Form_MouseDown" MouseMove="Form_MouseMove" MouseUp="Form_MouseUp">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="600"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -34,7 +35,7 @@
             </Grid.RowDefinitions>
 
             <!--Background Colour Right Side-->
-            <Rectangle Grid.Column="1"
+            <Rectangle Grid.Column="2"
                 Grid.Row="0"
                 Grid.RowSpan="4"
                 Fill="#7D3536"
@@ -134,7 +135,7 @@
             <!--StackPanel for Top Menu Buttons-->
             <StackPanel Grid.Row="1" Grid.Column="0"
                     Orientation="Horizontal"
-                    Grid.ColumnSpan="2">
+                    Grid.ColumnSpan="3">
 
 
                 <!--Line beneath menu buttons-->
@@ -181,7 +182,7 @@
                             Template="{StaticResource Button1Template}"
                             Grid.Column="3" 
                             Content="Activity"
-                            Margin="10,0,10,0"/>
+                            Margin="10,0,10,0" Click="activityButton_Click"/>
 
                         <!--Search Cards Textbox-->
                         <TextBox x:Name="searchBox"
@@ -190,7 +191,7 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
                             Width="115"
-                            Text="Search Cards and transactions"
+                            Text="Search Cards and Transactions"
                             FontSize="10"
                             FontStyle="Italic"
                             TextWrapping="Wrap"
@@ -219,92 +220,7 @@
                     Grid.Column="0"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
-                    Margin="157,4,0,0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Image
-                Grid.Column="0"
-                Grid.Row="0"
-                Grid.ColumnSpan="2"
-                Source="/Images/cardimage.jpg"
-                Height="150"
-                Margin="0,20,0,10"/>
-
-                    <!--NickName Textbox-->
-                    <TextBox x:Name="CardName"
-                     Text="Card Name"
-                     Grid.Column="0"
-                     Grid.Row="1"
-                     Grid.ColumnSpan="2"
-                     Background="Transparent"
-                     Foreground="DarkGray"
-                     FontSize="18" 
-                    BorderThickness="0,0,0,2"
-                     />
-
-                    <!--Declaring combobox - binding the contents to fullName from cs.-->
-                    <ComboBox x:Name="colourComboBox"
-                        Style="{StaticResource ComboBox1}"
-                        Text="Choose Colour"
-                        Grid.Column="0"
-                        Grid.Row="2"
-                        Grid.ColumnSpan="1"
-                        Margin="0,15,5,0">
-                        <ComboBoxItem Content="Red"/>
-                        <ComboBoxItem Content="Green"/>
-                        <ComboBoxItem Content="Blue"/>
-                        <ComboBoxItem Content="Black"/>
-                    </ComboBox>
-
-                    <!--Declaring combobox - binding the contents to fullName from cs.-->
-                    <ComboBox x:Name="combobox2"
-                        Style="{StaticResource ComboBox1}"
-                        Text="Choose Limit"                           
-                        Grid.Column="1"
-                        Grid.Row="2"
-                        Grid.ColumnSpan="1"
-                        Margin="0,15,5,0">
-                        <ComboBoxItem Content="$50"/>
-                        <ComboBoxItem Content="$100"/>
-                        <ComboBoxItem Content="$150"/>
-                        <ComboBoxItem Content="$200"/>
-                        <ComboBoxItem Content="$250"/>
-                    </ComboBox>
-
-                    <Button x:Name="CreateButton"
-                        Style="{StaticResource Button1}"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="3"
-                        Content="Create"
-                        Foreground="White"
-                        Margin="0,40,0,10"
-                        Click="CreateButton_Click">
-                        <Button.Template>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Width="250" Height="25"
-                                    CornerRadius="12"
-                                    Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center" 
-                                                  HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
-                </Grid>
-            </StackPanel>
+                    Margin="157,4,0,0"/>
 
 
             <!--Right Side Stack Panel-->
@@ -339,13 +255,109 @@
                     VerticalAlignment="Top"
                     Source="/images/cardly2.png"
                     Opacity="0.65"/>
-            <ListView x:Name="listView" Grid.Column="1" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <StackPanel x:Name="CreateCard" Grid.Row="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="cardImage"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Source="/Images/cardimage.jpg"
+                           Margin="0, 20, 0, 10">
+                    </Image>
+
+                    <TextBox x:Name="CardName"
+                                 Text="Card Name"
+                                 Grid.Column="0"
+                                 Grid.Row="1"
+                                 Grid.ColumnSpan="2"
+                                 Background="Transparent"
+                                 Foreground="DarkGray"
+                                 FontSize="18"
+                                 BorderThickness="0,0,0,2">
+                    </TextBox>
+
+                    <ComboBox x:Name="colorCombo"
+                              Style="{StaticResource ComboBox1}"
+                              Text="Choose Color"
+                              Grid.Column="0"
+                              Grid.Row="2"
+                              Grid.ColumnSpan="1"
+                              Margin="0, 15, 5, 0">
+                        <ComboBoxItem Content="Red"/>
+                        <ComboBoxItem Content="Green"/>
+                        <ComboBoxItem Content="Blue"/>
+                        <ComboBoxItem Content="Black"/>
+                    </ComboBox>
+
+                    <ComboBox x:Name="combobox2"
+                              Style="{StaticResource ComboBox1}"
+                              Text="Choose Limit"
+                              Grid.Column="1"
+                              Grid.Row="2"
+                              Grid.ColumnSpan="1"
+                              Margin="0, 15, 5, 0">
+                        <ComboBoxItem Content="$50"/>
+                        <ComboBoxItem Content="$100"/>
+                        <ComboBoxItem Content="$150"/>
+                        <ComboBoxItem Content="$200"/>
+                        <ComboBoxItem Content="$250"/>
+                    </ComboBox>
+
+                    <Button x:Name="CreateButton"
+                            Style="{StaticResource Button1}"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="3"
+                            Content="Create"
+                            Foreground="White"
+                            Margin="0,40,0,10"
+                            Click="CreateButton_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="250" Height="25"
+                                        CornerRadius="12"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" 
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="2">
+                <StackPanel x:Name="CreatedCards">
+                    <StackPanel.Resources>
+                        <Style TargetType="RadioButton">
+                            <Style.Triggers>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
+
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                            <Setter Property="FontSize" Value="18"/>
+
+                        </Style>
+                    </StackPanel.Resources>
+                </StackPanel>
+            </ScrollViewer>
+
         </Grid>
     </Border>
 </Window>

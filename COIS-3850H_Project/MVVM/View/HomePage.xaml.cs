@@ -19,6 +19,7 @@ using Application = System.Windows.Application;
 using Label = System.Windows.Controls.Label;
 using Point = System.Windows.Point;
 using SolidColorBrush = System.Windows.Media.SolidColorBrush;
+using System.Drawing;
 
 namespace COIS_3850H_Project.MVVM.View
 {
@@ -110,9 +111,11 @@ namespace COIS_3850H_Project.MVVM.View
             //Console.WriteLine(ccNumber);
             //Console.ReadLine();
 
-            
+            System.Windows.Controls.RadioButton createdCard = new System.Windows.Controls.RadioButton();
+            createdCard.Content = ccNumber;
+            CreatedCards.Children.Add(createdCard);
 
-            MessageBox.Show(string.Format("Your Card Number is: \r\n{0}", ccNumber));
+            //MessageBox.Show(string.Format("Your Card Number is: \r\n{0}", ccNumber));
         }
 
         private void myCardsButton_Click(object sender, RoutedEventArgs e)
@@ -137,6 +140,13 @@ namespace COIS_3850H_Project.MVVM.View
         private void listView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void activityButton_Click(object sender, RoutedEventArgs e)
+        {
+            UsageStatisticsPage usageStatisticsPage = new UsageStatisticsPage();
+            usageStatisticsPage.Show();
+            this.Close();
         }
     }
 }

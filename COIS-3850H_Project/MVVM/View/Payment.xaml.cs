@@ -77,7 +77,9 @@ namespace COIS_3850H_Project.MVVM.View
 
         private void activityButton_Click(object sender, RoutedEventArgs e)
         {
-
+            UsageStatisticsPage usageStatisticsPage = new UsageStatisticsPage();
+            usageStatisticsPage.Show();
+            this.Close();
         }
 
         private void paymentButton_Click(object sender, RoutedEventArgs e)
