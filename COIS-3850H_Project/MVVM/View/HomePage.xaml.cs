@@ -111,6 +111,7 @@ namespace COIS_3850H_Project.MVVM.View
             //Console.WriteLine(ccNumber);
             //Console.ReadLine();
 
+            // Adds a radio button with the credit card numbers to the stack panel.
             System.Windows.Controls.RadioButton createdCard = new System.Windows.Controls.RadioButton();
             createdCard.Content = ccNumber;
             CreatedCards.Children.Add(createdCard);
