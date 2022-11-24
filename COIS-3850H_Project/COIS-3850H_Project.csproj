@@ -95,7 +95,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\CardNumber.cs" />
+    <Compile Include="Core\Card.cs" />
+    <Compile Include="Core\CardNum.cs" />
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
