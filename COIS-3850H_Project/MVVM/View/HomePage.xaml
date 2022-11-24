@@ -301,19 +301,17 @@
                         <ComboBoxItem Content="Black"/>
                     </ComboBox>
 
-                    <ComboBox x:Name="combobox2"
-                              Style="{StaticResource ComboBox1}"
-                              Text="Choose Limit"
-                              Grid.Column="1"
-                              Grid.Row="2"
-                              Grid.ColumnSpan="1"
-                              Margin="0, 15, 5, 0">
-                        <ComboBoxItem Content="$50"/>
-                        <ComboBoxItem Content="$100"/>
-                        <ComboBoxItem Content="$150"/>
-                        <ComboBoxItem Content="$200"/>
-                        <ComboBoxItem Content="$250"/>
-                    </ComboBox>
+                    <TextBox x:Name="textboxLimit"
+                        Text="Choose Limit"                           
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Background="Transparent"
+                        Foreground="DarkGray"
+                        FontSize="14" 
+                        BorderThickness="0,0,0,2"
+                        Grid.ColumnSpan="1"
+                        Margin="0,15,5,0">
+                    </TextBox>
 
                     <Button x:Name="CreateButton"
                             Style="{StaticResource Button1}"
@@ -350,7 +348,7 @@
 
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="BorderThickness" Value="2"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                            <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
                             <Setter Property="FontSize" Value="18"/>
 
                         </Style>

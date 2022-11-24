@@ -20,6 +20,7 @@ using Label = System.Windows.Controls.Label;
 using Point = System.Windows.Point;
 using SolidColorBrush = System.Windows.Media.SolidColorBrush;
 using System.Drawing;
+using System.Windows.Controls.Primitives;
 
 namespace COIS_3850H_Project.MVVM.View
 {
@@ -75,7 +76,8 @@ namespace COIS_3850H_Project.MVVM.View
         }
         private void minButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            HomePage home = new HomePage();
+            home.WindowState= WindowState.Minimized;
         }
 
         private void logOutButton_Click(object sender, RoutedEventArgs e)
@@ -87,30 +89,38 @@ namespace COIS_3850H_Project.MVVM.View
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            //new CardNumber object
-            CardNumber testCard = new CardNumber();
+            //values from card info text boxes and combo box
+            string cardName = CardName.Text;
+            string cardColour = colorCombo.SelectedValue.ToString();
+            int cardLimit = Convert.ToInt32(textboxLimit.Text);
+
+            //new Card object
+            Card testCard = new Card(cardName, cardColour, cardLimit);
 
             //Converting Card Digits into one String to display to User:
             //first half of Card Number to String: "7 55555"
-            string a = string.Concat(testCard.Card[0], " ", testCard.Card[1], testCard.Card[2], testCard.Card[3], testCard.Card[4], testCard.Card[5], " ");
+            string a = string.Concat(testCard.CreditCardNum[0], " ", testCard.CreditCardNum[1], testCard.CreditCardNum[2], testCard.CreditCardNum[3], testCard.CreditCardNum[4], testCard.CreditCardNum[5], " ");
 
             //second half of Card Number to String
             //start at first account number digit, add each following account number digit to string
-            string b = Convert.ToString(testCard.Card[6]);
+            string b = Convert.ToString(testCard.CreditCardNum[6]);
 
-            for (int i = 7; i < testCard.CardLength - 1; i++)
+            //for (int i = 7; i < testCard.CreditCardNum.Length - 1; i++)
+            for (int i = 7; i < testCard.Random69 + 7; i++)
             {
-                b = b + Convert.ToString(testCard.Card[i]);
+                b = b + Convert.ToString(testCard.CreditCardNum[i]);
             }
 
             //check dig
-            string c = string.Concat(" ", testCard.Card[testCard.CardLength]);
+            string c = string.Concat(" ", testCard.CreditCardNum[6 + testCard.Random69]);
+            //string c = string.Concat(" ", testCard.CreditCardNum[testCard.CreditCardNum.Length-1]);
 
             //combine the above strings / parts of card number into one String "ccNumber"
             string ccNumber = a + b + c;
             //Console.WriteLine(ccNumber);
             //Console.ReadLine();
 
+            // Adds a radio button with the credit card numbers to the stack panel.
             System.Windows.Controls.RadioButton createdCard = new System.Windows.Controls.RadioButton();
             createdCard.Content = ccNumber;
             CreatedCards.Children.Add(createdCard);
@@ -147,6 +157,11 @@ namespace COIS_3850H_Project.MVVM.View
             UsageStatisticsPage usageStatisticsPage = new UsageStatisticsPage();
             usageStatisticsPage.Show();
             this.Close();
+        }
+
+        private void minButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
