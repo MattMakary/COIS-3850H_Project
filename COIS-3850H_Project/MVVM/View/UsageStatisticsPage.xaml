@@ -5,7 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:COIS_3850H_Project.MVVM.View"
         mc:Ignorable="d"
-        Title="UsageStatisticsPage" Height="450" Width="800">
+        Title="UsageStatisticsPage" 
+        Height="500" 
+        Width="800"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None">
     <Grid>
 
         <Border
@@ -28,7 +34,7 @@
                 <Rectangle Grid.Column="1"
                 Grid.Row="0"
                 Grid.RowSpan="4"
-                Fill="#7D3536"
+                Fill="#FF736969"
                 Panel.ZIndex="0"/>
                 <!--Cardly Logo - Top Left-->
                 <Image
@@ -133,7 +139,7 @@
                             Template="{StaticResource Button1Template}"
                             Grid.Column="0" 
                             Content="Home"
-                            Margin="10,0,10,0">
+                            Margin="10,0,10,0" Click="homeButton_Click">
                             </Button>
                             <!--My Cards Button-->
                             <Button x:Name="myCardsButton"
@@ -141,7 +147,7 @@
                             Template="{StaticResource Button1Template}"
                             Grid.Column="1" 
                             Content="My Cards"
-                            Margin="10,0,10,0">
+                            Margin="10,0,10,0" Click="myCardsButton_Click">
                             </Button>
                             <!--Payment Button-->
                             <Button x:Name="paymentButton"
@@ -149,7 +155,7 @@
                             Template="{StaticResource Button1Template}"
                             Grid.Column="2" 
                             Content="Payment"
-                            Margin="10,0,10,0">
+                            Margin="10,0,10,0" Click="paymentButton_Click">
                             </Button>
                             <!--Activity Button-->
                             <Button x:Name="activityButton"
@@ -157,24 +163,60 @@
                             Template="{StaticResource Button1Template}"
                             Grid.Column="3" 
                             Content="Activity"
-                            Margin="10,0,10,0">
+                            Margin="10,0,10,0" Background="#FF561E1E" Click="activityButton_Click">
                             </Button>
+
+                            <!--Search Cards Textbox-->
+                            <TextBox x:Name="searchBox"
+                                     Grid.Column="4"
+                                     Grid.Row="1"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     Width="115"
+                                     Text="Search Cards and transactions"
+                                     FontSize="10"
+                                     FontStyle="Italic"
+                                     TextWrapping="Wrap"
+                                     Background="LightGray"
+                                     Foreground="DarkGray">
+                                <TextBox.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="10"></Setter>
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
 
                             <!--Log Out Button-->
                             <Button x:Name="logOutButton"
-                            Style="{StaticResource Button1}"
-                            Template="{StaticResource Button1Template}"
-                            Grid.Column="5"
-                            Grid.Row="0"
-                            Content="Log Out"
-                            Background="White"
-                            Foreground="#7D3536"
-                            HorizontalAlignment="Right"
-                            Margin="10,0,10,0" Click="logOutButton_Click">
-                            </Button>
+                                    Style="{StaticResource Button1}"
+                                    Template="{StaticResource Button1Template}"
+                                    Grid.Column="5"
+                                    Grid.Row="0"
+                                    Content="Log Out"
+                                    HorizontalAlignment="Right"
+                                    Margin="10,0,10,0" Click="logOutButton_Click"/>
+
                         </Grid>
                     </Border>
                 </StackPanel>
+                <TextBox x:Name="searchBox_Copy"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Width="492"
+                                Text="Search"
+                                FontSize="18"
+                                FontStyle="Italic"
+                                TextWrapping="Wrap"
+                                Background="LightGray"
+                                Foreground="DarkGray" Margin="56,32,0,0" Grid.Row="2" Height="28">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Label x:Name="label" Content="Filter" HorizontalAlignment="Left" Height="38" Margin="56,65,0,0" Grid.Row="2" VerticalAlignment="Top" Width="150" Foreground="#7F000000" FontSize="20"/>
+                <Label x:Name="label_Copy" Content="No Transactions Yet." HorizontalAlignment="Center" Height="38" Grid.Row="2" VerticalAlignment="Center" Width="202" FontSize="20" Background="Transparent" Foreground="#FF672E2E" FontWeight="Bold"/>
 
 
             </Grid>

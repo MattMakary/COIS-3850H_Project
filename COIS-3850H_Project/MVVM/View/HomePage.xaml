@@ -38,7 +38,7 @@
             <Rectangle Grid.Column="2"
                 Grid.Row="0"
                 Grid.RowSpan="4"
-                Fill="#7D3536"
+                Fill="#FF736969"
                 Panel.ZIndex="0"/>
 
             <!--Cardly Logo - Top Left-->
@@ -196,19 +196,26 @@
                             FontStyle="Italic"
                             TextWrapping="Wrap"
                             Background="LightGray"
-                            Foreground="DarkGray"/>
+                            Foreground="DarkGray">
+
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"></Setter>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+
 
                         <!--Log Out Button-->
                         <Button x:Name="logOutButton"
-                            Style="{StaticResource Button1}"
-                            Template="{StaticResource Button1Template}"
-                            Grid.Column="5"
-                            Grid.Row="0"
-                            Content="Log Out"
-                            Background="White"
-                            Foreground="#7D3536"
-                            HorizontalAlignment="Right"
-                            Margin="10,0,10,0" Click="logOutButton_Click"/>
+                                Style="{StaticResource Button1}"
+                                Template="{StaticResource Button1Template}"
+                                Grid.Column="5"
+                                Grid.Row="0"
+                                Content="Log Out"
+                                HorizontalAlignment="Right"
+                                Margin="10,0,10,0" Click="logOutButton_Click"/>
+
 
                     </Grid>
                 </Border>
@@ -321,7 +328,7 @@
                             Content="Create"
                             Foreground="White"
                             Margin="0,40,0,10"
-                            Click="CreateButton_Click">
+                            Click="CreateButton_Click" Background="#FF736969">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Border Width="250" Height="25"

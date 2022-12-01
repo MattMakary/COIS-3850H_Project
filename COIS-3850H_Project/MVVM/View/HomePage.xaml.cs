@@ -143,7 +143,9 @@ namespace COIS_3850H_Project.MVVM.View
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MainPage mainPage = new MainPage();
+            mainPage.Show();
+            this.Close();
         }
 
         private void listView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

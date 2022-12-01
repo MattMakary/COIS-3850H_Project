@@ -109,5 +109,10 @@ namespace COIS_3850H_Project.MVVM.View
             loginPage.Show();
             this.Close();
         }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

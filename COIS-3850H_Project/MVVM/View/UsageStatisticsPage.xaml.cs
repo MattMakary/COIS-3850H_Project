@@ -26,10 +26,38 @@ namespace COIS_3850H_Project.MVVM.View
 
         private void logOutButton_Click(object sender, RoutedEventArgs e)
         {
-
+            LoginPage loginPage = new LoginPage();
+            loginPage.Show();
+            this.Close();
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void myCardsButton_Click(object sender, RoutedEventArgs e)
+        {
+            HomePage homePage = new HomePage();
+            homePage.Show();
+            this.Close();
+        }
+
+        private void paymentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Payment paymentPage = new Payment();
+            paymentPage.Show();
+            this.Close();
+        }
+
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage mainPage = new MainPage();
+            mainPage.Show();
+            this.Close();
+        }
+
+        private void activityButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

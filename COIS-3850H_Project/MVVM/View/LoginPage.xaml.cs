@@ -69,8 +69,8 @@ namespace COIS_3850H_Project.MVVM.View
                 if(rec != null)
                 {
                     MessageBox.Show("Login Success");
-                    HomePage homePage = new HomePage();
-                    homePage.Show();
+                    MainPage mainPage = new MainPage();
+                    mainPage.Show();
                     this.Close();
                 }
                 else
@@ -105,6 +105,11 @@ namespace COIS_3850H_Project.MVVM.View
             CreateAccount createAccount = new CreateAccount();
             createAccount.Show();
             this.Close();
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
