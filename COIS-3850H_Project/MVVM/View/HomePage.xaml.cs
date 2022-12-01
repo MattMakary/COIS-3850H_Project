@@ -76,7 +76,8 @@ namespace COIS_3850H_Project.MVVM.View
         }
         private void minButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            HomePage home = new HomePage();
+            home.WindowState= WindowState.Minimized;
         }
 
         private void logOutButton_Click(object sender, RoutedEventArgs e)
@@ -158,6 +159,11 @@ namespace COIS_3850H_Project.MVVM.View
             UsageStatisticsPage usageStatisticsPage = new UsageStatisticsPage();
             usageStatisticsPage.Show();
             this.Close();
+        }
+
+        private void minButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
